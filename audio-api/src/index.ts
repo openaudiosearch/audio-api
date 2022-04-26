@@ -1,6 +1,7 @@
 import { ApolloServer } from "apollo-server-fastify";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { FyydAPI } from "./sources/fyyd";
+import { CbaAPI } from "./sources/cba";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { InternetArchiveAPI } from "./sources/internetarchive";
 import { PodcastIndexAPI } from "./sources/podcastindex";
@@ -21,6 +22,7 @@ const startServer = async () => {
     dataSources: () => {
       return {
         fyydAPI: new FyydAPI(),
+        cbaAPI: new CbaAPI(),
         internetArchiveAPI: new InternetArchiveAPI(),
         podcastIndexAPI: new PodcastIndexAPI(),
       };

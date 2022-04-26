@@ -10,13 +10,13 @@ const Query: QueryResolvers = {
     }
   },
   shows(_root, { offset, first, source }, { dataSources }) {
+    const count = first || 50;
+    offset = offset ? +(offset / count) : 0
     switch (source) {
       case Directory.Fyyd:
-        const count = first || 50;
-        return dataSources?.fyydAPI.podcasts(
-          offset ? +(offset / count) : 0,
-          count
-        );
+        return dataSources?.fyydAPI.podcasts(offset, count)
+      case Directory.Cba:
+        return dataSources?.cbaAPI.podcasts(offset, count)
       default:
         return null;
     }

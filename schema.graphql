@@ -13,6 +13,8 @@ enum Directory {
 
   ARDAUDIOTHEK
   SPOTIFY
+
+  CBA
 }
 
 type ImageType implements Image {
